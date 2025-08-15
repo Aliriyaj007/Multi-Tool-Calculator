@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 
 //================================================================
 // TYPES
@@ -19,32 +19,32 @@ interface CalculatorCategory {
 //================================================================
 // ICONS
 //================================================================
-const CalculatorIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const CalculatorIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
   </svg>
 );
 
-const GeometryIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const GeometryIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
   </svg>
 );
 
-const FinanceIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const FinanceIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
   </svg>
 );
 
-const HealthIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const HealthIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
   </svg>
 );
 
-const TimeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+const TimeIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
@@ -55,8 +55,8 @@ const TimeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 //================================================================
 
 const StandardCalculator: React.FC = () => {
-    const [display, setDisplay] = useState<string>("0");
-    const [expression, setExpression] = useState<string>("");
+    const [display, setDisplay] = React.useState<string>("0");
+    const [expression, setExpression] = React.useState<string>("");
 
     const handleButtonClick = (value: string) => {
         if (display.length > 20) return;
@@ -209,10 +209,10 @@ const StandardCalculator: React.FC = () => {
 };
 
 const PercentageCalculator: React.FC = () => {
-    const [percentage, setPercentage] = useState<string>('10');
-    const [baseValue, setBaseValue] = useState<string>('50');
+    const [percentage, setPercentage] = React.useState<string>('10');
+    const [baseValue, setBaseValue] = React.useState<string>('50');
 
-    const result = useMemo(() => {
+    const result = React.useMemo(() => {
         const p = parseFloat(percentage);
         const b = parseFloat(baseValue);
         if (isNaN(p) || isNaN(b)) {
@@ -262,9 +262,9 @@ const PercentageCalculator: React.FC = () => {
 };
 
 const AverageCalculator: React.FC = () => {
-    const [numbers, setNumbers] = useState<string>('10, 20, 30, 40, 50');
+    const [numbers, setNumbers] = React.useState<string>('10, 20, 30, 40, 50');
 
-    const average = useMemo(() => {
+    const average = React.useMemo(() => {
         const numArray = numbers
             .split(',')
             .map(n => parseFloat(n.trim()))
@@ -303,14 +303,14 @@ const AverageCalculator: React.FC = () => {
 };
 
 const FractionSimplifierCalculator: React.FC = () => {
-    const [numerator, setNumerator] = useState<string>('12');
-    const [denominator, setDenominator] = useState<string>('30');
+    const [numerator, setNumerator] = React.useState<string>('12');
+    const [denominator, setDenominator] = React.useState<string>('30');
 
     const gcd = (a: number, b: number): number => {
         return b === 0 ? a : gcd(b, a % b);
     };
 
-    const simplified = useMemo(() => {
+    const simplified = React.useMemo(() => {
         const num = parseInt(numerator);
         const den = parseInt(denominator);
 
@@ -362,13 +362,13 @@ const FractionSimplifierCalculator: React.FC = () => {
 };
 
 const DecimalToFractionCalculator: React.FC = () => {
-    const [decimal, setDecimal] = useState<string>('0.75');
+    const [decimal, setDecimal] = React.useState<string>('0.75');
 
     const gcd = (a: number, b: number): number => {
         return b === 0 ? a : gcd(b, a % b);
     };
 
-    const fraction = useMemo(() => {
+    const fraction = React.useMemo(() => {
         const dec = parseFloat(decimal);
         if (isNaN(dec)) {
             return { num: 'Invalid', den: 'Input' };
@@ -420,9 +420,9 @@ const DecimalToFractionCalculator: React.FC = () => {
 };
 
 const PrimeNumberCheckerCalculator: React.FC = () => {
-    const [number, setNumber] = useState<string>('17');
+    const [number, setNumber] = React.useState<string>('17');
 
-    const isPrime = useMemo(() => {
+    const isPrime = React.useMemo(() => {
         const num = parseInt(number);
         if (isNaN(num) || num < 2 || !Number.isInteger(num)) {
             return { text: 'Invalid Input', color: 'text-yellow-400' };
@@ -467,9 +467,9 @@ const PrimeNumberCheckerCalculator: React.FC = () => {
 };
 
 const SquareCalculator: React.FC = () => {
-    const [side, setSide] = useState<string>('10');
+    const [side, setSide] = React.useState<string>('10');
 
-    const { area, perimeter } = useMemo(() => {
+    const { area, perimeter } = React.useMemo(() => {
         const s = parseFloat(side);
         if (isNaN(s) || s < 0) {
             return { area: 'Invalid', perimeter: 'Invalid' };
@@ -515,9 +515,9 @@ const SquareCalculator: React.FC = () => {
 };
 
 const CircleCalculator: React.FC = () => {
-    const [radius, setRadius] = useState<string>('10');
+    const [radius, setRadius] = React.useState<string>('10');
 
-    const { area, circumference } = useMemo(() => {
+    const { area, circumference } = React.useMemo(() => {
         const r = parseFloat(radius);
         if (isNaN(r) || r < 0) {
             return { area: 'Invalid', circumference: 'Invalid' };
@@ -561,10 +561,10 @@ const CircleCalculator: React.FC = () => {
 };
 
 const RectangleCalculator: React.FC = () => {
-    const [width, setWidth] = useState<string>('10');
-    const [length, setLength] = useState<string>('20');
+    const [width, setWidth] = React.useState<string>('10');
+    const [length, setLength] = React.useState<string>('20');
 
-    const { area, perimeter } = useMemo(() => {
+    const { area, perimeter } = React.useMemo(() => {
         const w = parseFloat(width);
         const l = parseFloat(length);
         if (isNaN(w) || isNaN(l) || w < 0 || l < 0) {
@@ -624,10 +624,10 @@ const RectangleCalculator: React.FC = () => {
 };
 
 const TriangleCalculator: React.FC = () => {
-    const [base, setBase] = useState<string>('10');
-    const [height, setHeight] = useState<string>('5');
+    const [base, setBase] = React.useState<string>('10');
+    const [height, setHeight] = React.useState<string>('5');
 
-    const area = useMemo(() => {
+    const area = React.useMemo(() => {
         const b = parseFloat(base);
         const h = parseFloat(height);
         if (isNaN(b) || isNaN(h) || b < 0 || h < 0) {
@@ -680,9 +680,9 @@ const TriangleCalculator: React.FC = () => {
 };
 
 const CubeCalculator: React.FC = () => {
-    const [side, setSide] = useState<string>('5');
+    const [side, setSide] = React.useState<string>('5');
 
-    const { volume, surfaceArea } = useMemo(() => {
+    const { volume, surfaceArea } = React.useMemo(() => {
         const s = parseFloat(side);
         if (isNaN(s) || s < 0) {
             return { volume: 'Invalid', surfaceArea: 'Invalid' };
@@ -726,9 +726,9 @@ const CubeCalculator: React.FC = () => {
 };
 
 const SphereCalculator: React.FC = () => {
-    const [radius, setRadius] = useState<string>('5');
+    const [radius, setRadius] = React.useState<string>('5');
 
-    const { volume, surfaceArea } = useMemo(() => {
+    const { volume, surfaceArea } = React.useMemo(() => {
         const r = parseFloat(radius);
         if (isNaN(r) || r < 0) {
             return { volume: 'Invalid', surfaceArea: 'Invalid' };
@@ -772,11 +772,11 @@ const SphereCalculator: React.FC = () => {
 };
 
 const LoanCalculator: React.FC = () => {
-    const [amount, setAmount] = useState<string>('10000');
-    const [interest, setInterest] = useState<string>('5');
-    const [term, setTerm] = useState<string>('5');
+    const [amount, setAmount] = React.useState<string>('10000');
+    const [interest, setInterest] = React.useState<string>('5');
+    const [term, setTerm] = React.useState<string>('5');
 
-    const { monthlyPayment, totalInterest, totalPayment } = useMemo(() => {
+    const { monthlyPayment, totalInterest, totalPayment } = React.useMemo(() => {
         const P = parseFloat(amount); // Principal
         const r = parseFloat(interest) / 100 / 12; // Monthly interest rate
         const n = parseFloat(term) * 12; // Number of months
@@ -870,10 +870,10 @@ const LoanCalculator: React.FC = () => {
 };
 
 const DiscountCalculator: React.FC = () => {
-    const [price, setPrice] = useState<string>('100');
-    const [discount, setDiscount] = useState<string>('20');
+    const [price, setPrice] = React.useState<string>('100');
+    const [discount, setDiscount] = React.useState<string>('20');
 
-    const { finalPrice, saved } = useMemo(() => {
+    const { finalPrice, saved } = React.useMemo(() => {
         const p = parseFloat(price);
         const d = parseFloat(discount);
         if (isNaN(p) || isNaN(d) || p < 0 || d < 0) {
@@ -928,12 +928,12 @@ const DiscountCalculator: React.FC = () => {
 };
 
 const InvestmentCalculator: React.FC = () => {
-    const [principal, setPrincipal] = useState<string>('1000');
-    const [rate, setRate] = useState<string>('5');
-    const [term, setTerm] = useState<string>('10');
-    const [compounding, setCompounding] = useState<string>('12'); // Monthly
+    const [principal, setPrincipal] = React.useState<string>('1000');
+    const [rate, setRate] = React.useState<string>('5');
+    const [term, setTerm] = React.useState<string>('10');
+    const [compounding, setCompounding] = React.useState<string>('12'); // Monthly
 
-    const futureValue = useMemo(() => {
+    const futureValue = React.useMemo(() => {
         const P = parseFloat(principal);
         const r = parseFloat(rate) / 100;
         const t = parseFloat(term);
@@ -992,10 +992,10 @@ const InvestmentCalculator: React.FC = () => {
 };
 
 const CommissionCalculator: React.FC = () => {
-    const [saleAmount, setSaleAmount] = useState<string>('5000');
-    const [rate, setRate] = useState<string>('3');
+    const [saleAmount, setSaleAmount] = React.useState<string>('5000');
+    const [rate, setRate] = React.useState<string>('3');
 
-    const commission = useMemo(() => {
+    const commission = React.useMemo(() => {
         const amount = parseFloat(saleAmount);
         const r = parseFloat(rate);
         if (isNaN(amount) || isNaN(r) || amount < 0 || r < 0) {
@@ -1044,11 +1044,11 @@ const CommissionCalculator: React.FC = () => {
 };
 
 const BMICalculator: React.FC = () => {
-    const [height, setHeight] = useState<string>('180');
-    const [weight, setWeight] = useState<string>('75');
-    const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
+    const [height, setHeight] = React.useState<string>('180');
+    const [weight, setWeight] = React.useState<string>('75');
+    const [unitSystem, setUnitSystem] = React.useState<'metric' | 'imperial'>('metric');
 
-    const { bmi, category, color } = useMemo(() => {
+    const { bmi, category, color } = React.useMemo(() => {
         const h = parseFloat(height);
         const w = parseFloat(weight);
 
@@ -1126,13 +1126,13 @@ const BMICalculator: React.FC = () => {
 };
 
 const BMRCalculator: React.FC = () => {
-    const [age, setAge] = useState<string>('30');
-    const [gender, setGender] = useState<'male' | 'female'>('male');
-    const [height, setHeight] = useState<string>('180');
-    const [weight, setWeight] = useState<string>('75');
-    const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
+    const [age, setAge] = React.useState<string>('30');
+    const [gender, setGender] = React.useState<'male' | 'female'>('male');
+    const [height, setHeight] = React.useState<string>('180');
+    const [weight, setWeight] = React.useState<string>('75');
+    const [unitSystem, setUnitSystem] = React.useState<'metric' | 'imperial'>('metric');
     
-    const bmr = useMemo(() => {
+    const bmr = React.useMemo(() => {
         const ageVal = parseInt(age);
         let heightVal = parseFloat(height);
         let weightVal = parseFloat(weight);
@@ -1206,10 +1206,10 @@ const BMRCalculator: React.FC = () => {
 };
 
 const WaterIntakeCalculator: React.FC = () => {
-    const [weight, setWeight] = useState<string>('75');
-    const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
+    const [weight, setWeight] = React.useState<string>('75');
+    const [unitSystem, setUnitSystem] = React.useState<'metric' | 'imperial'>('metric');
     
-    const { intakeLiters, intakeOunces } = useMemo(() => {
+    const { intakeLiters, intakeOunces } = React.useMemo(() => {
         let weightKg = parseFloat(weight);
 
         if (isNaN(weightKg) || weightKg <= 0) {
@@ -1271,11 +1271,11 @@ const WaterIntakeCalculator: React.FC = () => {
 };
 
 const IdealWeightCalculator: React.FC = () => {
-    const [height, setHeight] = useState<string>('180');
-    const [gender, setGender] = useState<'male' | 'female'>('male');
-    const [unitSystem, setUnitSystem] = useState<'metric' | 'imperial'>('metric');
+    const [height, setHeight] = React.useState<string>('180');
+    const [gender, setGender] = React.useState<'male' | 'female'>('male');
+    const [unitSystem, setUnitSystem] = React.useState<'metric' | 'imperial'>('metric');
 
-    const idealWeight = useMemo(() => {
+    const idealWeight = React.useMemo(() => {
         let heightCm = parseFloat(height);
 
         if (isNaN(heightCm) || heightCm <= 0) {
@@ -1341,9 +1341,9 @@ const IdealWeightCalculator: React.FC = () => {
 
 const AgeCalculator: React.FC = () => {
     const today = new Date().toISOString().split('T')[0];
-    const [birthDate, setBirthDate] = useState<string>(today);
+    const [birthDate, setBirthDate] = React.useState<string>(today);
 
-    const { years, months, days } = useMemo(() => {
+    const { years, months, days } = React.useMemo(() => {
         if (!birthDate) return { years: 0, months: 0, days: 0 };
 
         const start = new Date(birthDate);
@@ -1407,13 +1407,13 @@ const AgeCalculator: React.FC = () => {
 };
 
 const TimeCalculator: React.FC = () => {
-    const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 16));
-    const [operation, setOperation] = useState<'add' | 'subtract'>('add');
-    const [days, setDays] = useState('0');
-    const [hours, setHours] = useState('0');
-    const [minutes, setMinutes] = useState('0');
+    const [startDate, setStartDate] = React.useState(new Date().toISOString().slice(0, 16));
+    const [operation, setOperation] = React.useState<'add' | 'subtract'>('add');
+    const [days, setDays] = React.useState('0');
+    const [hours, setHours] = React.useState('0');
+    const [minutes, setMinutes] = React.useState('0');
 
-    const resultDate = useMemo(() => {
+    const resultDate = React.useMemo(() => {
         const date = new Date(startDate);
         if (isNaN(date.getTime())) {
             return 'Invalid start date';
@@ -1474,7 +1474,7 @@ const TimeCalculator: React.FC = () => {
 };
 
 const DaysUntilNewYearCalculator: React.FC = () => {
-    const daysLeft = useMemo(() => {
+    const daysLeft = React.useMemo(() => {
         const today = new Date();
         const currentYear = today.getFullYear();
         const newYearDate = new Date(currentYear + 1, 0, 1); // Month is 0-indexed
@@ -1558,10 +1558,10 @@ const CALCULATOR_CATEGORIES: CalculatorCategory[] = [
 // APP COMPONENT
 //================================================================
 const App: React.FC = () => {
-  const [activeCalculator, setActiveCalculator] = useState<Calculator>(CALCULATOR_CATEGORIES[0].calculators[0]);
-  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set([CALCULATOR_CATEGORIES[0].name]));
+  const [activeCalculator, setActiveCalculator] = React.useState<Calculator>(CALCULATOR_CATEGORIES[0].calculators[0]);
+  const [openCategories, setOpenCategories] = React.useState<Set<string>>(new Set([CALCULATOR_CATEGORIES[0].name]));
 
-  const ActiveCalculatorComponent = useMemo(() => {
+  const ActiveCalculatorComponent = React.useMemo(() => {
     return activeCalculator.component;
   }, [activeCalculator]);
 
