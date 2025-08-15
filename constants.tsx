@@ -1,31 +1,31 @@
 import React from 'react';
-import type { CalculatorCategory } from './types';
-import StandardCalculator from './components/calculators/StandardCalculator';
-import BMICalculator from './components/calculators/BMICalculator';
-import SquareCalculator from './components/calculators/SquareCalculator';
-import LoanCalculator from './components/calculators/LoanCalculator';
-import AgeCalculator from './components/calculators/AgeCalculator';
-import PercentageCalculator from './components/calculators/PercentageCalculator';
-import AverageCalculator from './components/calculators/AverageCalculator';
-import FractionSimplifierCalculator from './components/calculators/FractionSimplifierCalculator';
-import DecimalToFractionCalculator from './components/calculators/DecimalToFractionCalculator';
-import PrimeNumberCheckerCalculator from './components/calculators/PrimeNumberCheckerCalculator';
-import CircleCalculator from './components/calculators/CircleCalculator';
-import RectangleCalculator from './components/calculators/RectangleCalculator';
-import TriangleCalculator from './components/calculators/TriangleCalculator';
-import CubeCalculator from './components/calculators/CubeCalculator';
-import SphereCalculator from './components/calculators/SphereCalculator';
-import DiscountCalculator from './components/calculators/DiscountCalculator';
-import InvestmentCalculator from './components/calculators/InvestmentCalculator';
-import CommissionCalculator from './components/calculators/CommissionCalculator';
-import BMRCalculator from './components/calculators/BMRCalculator';
-import WaterIntakeCalculator from './components/calculators/WaterIntakeCalculator';
-import IdealWeightCalculator from './components/calculators/IdealWeightCalculator';
-import TimeCalculator from './components/calculators/TimeCalculator';
-import DaysUntilNewYearCalculator from './components/calculators/DaysUntilNewYearCalculator';
+import type { CalculatorCategory } from './types.ts';
+import StandardCalculator from './components/calculators/StandardCalculator.tsx';
+import BMICalculator from './components/calculators/BMICalculator.tsx';
+import SquareCalculator from './components/calculators/SquareCalculator.tsx';
+import LoanCalculator from './components/calculators/LoanCalculator.tsx';
+import AgeCalculator from './components/calculators/AgeCalculator.tsx';
+import PercentageCalculator from './components/calculators/PercentageCalculator.tsx';
+import AverageCalculator from './components/calculators/AverageCalculator.tsx';
+import FractionSimplifierCalculator from './components/calculators/FractionSimplifierCalculator.tsx';
+import DecimalToFractionCalculator from './components/calculators/DecimalToFractionCalculator.tsx';
+import PrimeNumberCheckerCalculator from './components/calculators/PrimeNumberCheckerCalculator.tsx';
+import CircleCalculator from './components/calculators/CircleCalculator.tsx';
+import RectangleCalculator from './components/calculators/RectangleCalculator.tsx';
+import TriangleCalculator from './components/calculators/TriangleCalculator.tsx';
+import CubeCalculator from './components/calculators/CubeCalculator.tsx';
+import SphereCalculator from './components/calculators/SphereCalculator.tsx';
+import DiscountCalculator from './components/calculators/DiscountCalculator.tsx';
+import InvestmentCalculator from './components/calculators/InvestmentCalculator.tsx';
+import CommissionCalculator from './components/calculators/CommissionCalculator.tsx';
+import BMRCalculator from './components/calculators/BMRCalculator.tsx';
+import WaterIntakeCalculator from './components/calculators/WaterIntakeCalculator.tsx';
+import IdealWeightCalculator from './components/calculators/IdealWeightCalculator.tsx';
+import TimeCalculator from './components/calculators/TimeCalculator.tsx';
+import DaysUntilNewYearCalculator from './components/calculators/DaysUntilNewYearCalculator.tsx';
 
 // Icons
-import { CalculatorIcon, GeometryIcon, FinanceIcon, HealthIcon, TimeIcon } from './components/icons';
+import { CalculatorIcon, GeometryIcon, FinanceIcon, HealthIcon, TimeIcon } from './components/icons/index.tsx';
 
 export const CALCULATOR_CATEGORIES: CalculatorCategory[] = [
   {

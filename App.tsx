@@ -1,7 +1,6 @@
-
 import React, { useState, useMemo } from 'react';
-import { CALCULATOR_CATEGORIES } from './constants';
-import type { Calculator, CalculatorCategory } from './types';
+import { CALCULATOR_CATEGORIES } from './constants.tsx';
+import type { Calculator, CalculatorCategory } from './types.ts';
 
 const App: React.FC = () => {
   const [activeCalculator, setActiveCalculator] = useState<Calculator>(CALCULATOR_CATEGORIES[0].calculators[0]);
